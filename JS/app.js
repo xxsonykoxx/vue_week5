@@ -121,6 +121,20 @@ createApp({
         }
       });
     },
+    addCouponCode() {
+      const url = `${api}${path}/coupon`;
+      const coupon = {
+        code: this.coupon_code,
+      };
+      axios.post(url, { data: coupon }).then((res) => {
+        if (res.data.success) {
+          alert(res.data.message);
+          this.getCart();
+        } else {
+          alert(res.data.message);
+        }
+      });
+    },
     createOrder() {
       const url = `${api}${path}/order`;
       const order = this.form;
